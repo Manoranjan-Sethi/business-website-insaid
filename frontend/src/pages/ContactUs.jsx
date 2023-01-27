@@ -11,14 +11,15 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+// import axios from "axios";
 
-const initialState = {
-  name: "",
-  email: "",
-  phonenumber: "",
-  message: "",
-};
 const ContactUs = () => {
+  const [initialState, setInitialState] = useState({
+    name: "",
+    email: "",
+    phonenumber: "",
+    message: "",
+  });
   const [allData, setAllData] = useState(initialState);
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -33,22 +34,23 @@ const ContactUs = () => {
     }));
   };
 
-  const emailRegex = /^\S+@\S+\.\S+$/;
-  const phoneRegex = /^\d{10}$/;
+  // const emailRegex = /^\S+@\S+\.\S+$/;
+  // const phoneRegex = /^\d{10}$/;
 
-  const onSubmit = (e) => {
+  const formSubmit = (e) => {
     e.preventDefault();
-    if (!emailRegex.test(email)) {
-      setEmailError("Invalid email");
-    } else {
-      setEmailError("");
-    }
+    console.log("hiii");
+    // if (!emailRegex.test(email)) {
+    //   setEmailError("Invalid email");
+    // } else {
+    //   setEmailError("");
+    // }
 
-    if (!phoneRegex.test(phonenumber)) {
-      setPhoneError("Invalid phone number");
-    } else {
-      setPhoneError("");
-    }
+    // if (!phoneRegex.test(phonenumber)) {
+    //   setPhoneError("Invalid phone number");
+    // } else {
+    //   setPhoneError("");
+    // }
     fetch("http://localhost:8000/del", {
       method: "POST",
       headers: {
@@ -58,13 +60,24 @@ const ContactUs = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setResponse(data.message);
+        setAllData(initialState);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-    alert("submitted successfully");
-    setAllData(initialState);
+
+    // try {
+    // const { name, email, phonenumber, message } = initialState;
+    // const newInitialState = { name, email, phonenumber, message };
+    // axios
+    //   .post("http://localhost:8000/del")
+    //   .then((res) => setInitialState(res))
+    //   .then(alert("submitted successfully"));
+    // } catch (error) {
+    //   console.log("Error:", error);
+    // }
   };
 
   return (
@@ -79,7 +92,7 @@ const ContactUs = () => {
       }}
     >
       <Heading as="h2">Querry Form</Heading>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={formSubmit}>
         <FormControl isRequired>
           <FormLabel>Name</FormLabel>
           <Input
@@ -120,7 +133,7 @@ const ContactUs = () => {
           value={message}
           onChange={onChange}
         />
-        <Button mt={[8]} w="100%" colorScheme="blue">
+        <Button mt={[8]} w="100%" type="submit" colorScheme="blue">
           submit
         </Button>
       </form>
