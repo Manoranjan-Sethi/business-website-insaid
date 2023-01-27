@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactNode } from "react";
 import {
   Box,
   Flex,
@@ -10,15 +9,12 @@ import {
   Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
   Heading,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Links = ["Contact Us"];
 
@@ -51,7 +47,7 @@ const Navbar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Heading as="h4" size="md">
+            <Heading as="h4" size="md" href="/">
               Draft Company
             </Heading>
             <HStack
@@ -80,11 +76,6 @@ const Navbar = () => {
                   }
                 />
               </MenuButton>
-              <MenuList>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
             </Menu>
           </Flex>
         </Flex>
