@@ -34,23 +34,22 @@ const ContactUs = () => {
     }));
   };
 
-  // const emailRegex = /^\S+@\S+\.\S+$/;
-  // const phoneRegex = /^\d{10}$/;
+  const emailRegex = /^\S+@\S+\.\S+$/;
+  const phoneRegex = /^\d{10}$/;
 
   const formSubmit = (e) => {
     e.preventDefault();
     console.log("hiii");
-    // if (!emailRegex.test(email)) {
-    //   setEmailError("Invalid email");
-    // } else {
-    //   setEmailError("");
-    // }
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid email");
+      return;
+    }
 
-    // if (!phoneRegex.test(phonenumber)) {
-    //   setPhoneError("Invalid phone number");
-    // } else {
-    //   setPhoneError("");
-    // }
+    if (!phoneRegex.test(phonenumber)) {
+      setPhoneError("Invalid phone number");
+      return;
+    }
+
     fetch("http://localhost:8000/del", {
       method: "POST",
       headers: {
@@ -67,17 +66,6 @@ const ContactUs = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-
-    // try {
-    // const { name, email, phonenumber, message } = initialState;
-    // const newInitialState = { name, email, phonenumber, message };
-    // axios
-    //   .post("http://localhost:8000/del")
-    //   .then((res) => setInitialState(res))
-    //   .then(alert("submitted successfully"));
-    // } catch (error) {
-    //   console.log("Error:", error);
-    // }
   };
 
   return (
@@ -120,7 +108,7 @@ const ContactUs = () => {
               placeholder="Phone number"
               onChange={onChange}
             />
-            {phoneError && <span>{phoneError}</span>}
+            {phoneError && <div>{phoneError}</div>}
           </InputGroup>
         </FormControl>
 
