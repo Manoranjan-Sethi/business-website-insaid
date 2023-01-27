@@ -1,6 +1,8 @@
-#  App
+#  Frictional Business App
 
-- [Click here](https://fireblogs-6a558.web.app) to see preview of my project.
+A Frictional Business App with contact-us page.
+
+- [Click here](https://incredible-beignet-76a976.netlify.app/) to see preview of my project.
 
 ## Tech Stack
 
@@ -10,15 +12,21 @@
 - React JS
 - chakra UI
 
+## Features
+
+- Landing Page
+- Contact Us
+
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/Manoranjan-Sethi/H-L-blogsWithFirebase.git
+  git clone https://github.com/Manoranjan-Sethi/business-website-insaid.git
 ```
 
 Go to folder
+
 run the frontend
 ```bash
  cd frontend
