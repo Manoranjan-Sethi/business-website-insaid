@@ -11,6 +11,10 @@ A Frictional Business App with contact-us page.
 - Javascript
 - React JS
 - chakra UI
+- MongoDB
+- Mongoose
+- Express
+- Node
 
 ## Features
 
