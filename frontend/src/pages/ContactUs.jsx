@@ -50,7 +50,7 @@ const ContactUs = () => {
       return;
     }
 
-    fetch("http://localhost:8000/del", {
+    fetch("https://easy-lime-earthworm-tux.cyclic.app/del", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
